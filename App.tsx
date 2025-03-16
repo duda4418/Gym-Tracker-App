@@ -1,16 +1,29 @@
 import React from 'react';
 import { PaperProvider } from 'react-native-paper';
-import { Button } from 'react-native-paper';
-import { View } from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import LoginScreen from "./screens/Login";
+import SignUpScreen from "./screens/SignUp";
+import HomeScreen from './screens/Home';
+import SplitsScreen from './screens/Splist';
 
-export default function App() {
+
+const Stack = createNativeStackNavigator()
+
+export default function Main() {
   return (
+    
     <PaperProvider>
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Button mode="contained" onPress={() => console.log('Pressed')}>
-          Press me
-        </Button>
-      </View>
+      <NavigationContainer>
+        <Stack.Navigator >
+          <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen name="SignUp" component={SignUpScreen} />
+          <Stack.Screen name="Home" component={HomeScreen} options ={{headerShown:false}}/>
+          <Stack.Screen name="Splits" component={SplitsScreen} options ={{headerShown:true}}/>
+
+        </Stack.Navigator>
+      </NavigationContainer>
     </PaperProvider>
+
   );
 }
