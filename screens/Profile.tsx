@@ -5,12 +5,12 @@ import { Button } from "react-native-paper";
 import NavBar from "../components/NavBar";
 
 
-export default function SplitsScreen({navigation} :any) {
+export default function ProfileScreen({navigation}:any) {
   
 
   return (
     <>
-        <Text>SPLITSS</Text>
+        <Text>Profile</Text>
     </>
   );
 }

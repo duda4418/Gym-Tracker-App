@@ -8,7 +8,7 @@ export default function LoginScreen({navigation}:any) {
 
   const handleLogin = () => {
     console.log("Logging in with:", email, password);
-    navigation.navigate('Home', {name:'Home'})
+    navigation.navigate('NavBar', {name:'NavBar'})
   };
 
   return (

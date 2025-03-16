@@ -6,6 +6,8 @@ import LoginScreen from "./screens/Login";
 import SignUpScreen from "./screens/SignUp";
 import HomeScreen from './screens/Home';
 import SplitsScreen from './screens/Splist';
+import ProfileScreen from './screens/Profile';
+import NavBar from './components/NavBar';
 
 
 const Stack = createNativeStackNavigator()
@@ -18,9 +20,11 @@ export default function Main() {
         <Stack.Navigator >
           <Stack.Screen name="Login" component={LoginScreen} />
           <Stack.Screen name="SignUp" component={SignUpScreen} />
-          <Stack.Screen name="Home" component={HomeScreen} options ={{headerShown:false}}/>
-          <Stack.Screen name="Splits" component={SplitsScreen} options ={{headerShown:true}}/>
-
+          <Stack.Screen
+            name="NavBar"
+            component={NavBar}
+            options={{ headerShown: false }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </PaperProvider>

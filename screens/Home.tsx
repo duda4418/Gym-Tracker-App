@@ -34,7 +34,7 @@ export default function HomeScreen({navigation} : any) {
             )}
         </TouchableOpacity>
 
-        <Button
+        {/* <Button
              icon={({ size }) => (
                 <MaterialCommunityIcons name="chevron-triple-right" size={22} color="white" />
               )}
@@ -42,10 +42,10 @@ export default function HomeScreen({navigation} : any) {
             style={styles.startButton}
             labelStyle={styles.buttonText}
             contentStyle={{ flexDirection: 'row-reverse', alignItems: 'center', justifyContent: 'center' }}
-            onPress={() => navigation.navigate('Splits', { name: 'Splits' })}
+            onPress={() => navigation.navigate('NavBar', { name: 'NavBar' })}
             >
-            Continue
-        </Button>
+            Continueu
+        </Button>  */}
     </View>
   );
 }
