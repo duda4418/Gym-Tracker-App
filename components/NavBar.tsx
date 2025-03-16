@@ -40,7 +40,7 @@ export default function NavBar() {
           renderIcon={({ route, focused, color }) => {
             const { options } = descriptors[route.key];
             if (options.tabBarIcon) {
-              return options.tabBarIcon({ focused, color, size: 24 });
+              return options.tabBarIcon({ focused, color, size: 24});
             }
 
             return null;
@@ -55,6 +55,10 @@ export default function NavBar() {
                 : route.name;
 
             return typeof label === 'string' ? label : undefined;
+          }}
+          style={{ backgroundColor: '',borderTopLeftRadius: 30,
+            borderTopRightRadius: 30,
+            overflow: 'hidden', 
           }}
         />
       )}
