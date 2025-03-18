@@ -11,7 +11,8 @@ const splits = [
   { title: "Legs", muscles: "Legs / Abs" },
   { title: "Arms", muscles: "Back / Biceps / Rear delts" },
   { title: "Sigma", muscles: "Legs / Abs" },
- 
+  
+
 ];
 
 export default function SplitsScreen({navigation}:any) {
@@ -28,18 +29,21 @@ export default function SplitsScreen({navigation}:any) {
 
       {/* Progress Bar */}
       <View style={styles.progressBar}>
-        <View style={[styles.progressDot, styles.activeDot]} />
-        <View style={styles.progressLine} />
+      <View style={styles.progressItem}>
         <View style={styles.progressDot} />
-        <View style={styles.progressLine} />
-        <View style={styles.progressDot} />
+        <Text style={styles.inactiveLabel}>Splits</Text>
       </View>
-
-      <View style={styles.progressLabels}>
-        <Text style={styles.activeLabel}>Splits</Text>
-        <Text style={styles.inactiveLabel}>Muscles</Text>
+      <View style={styles.progressLine} />
+      <View style={styles.progressItem}>
+        <View style={[styles.progressDot, styles.activeDot]} />
+        <Text style={styles.activeLabel}>Muscles</Text>
+      </View>
+      <View style={styles.progressLine} />
+      <View style={styles.progressItem}>
+        <View style={styles.progressDot} />
         <Text style={styles.inactiveLabel}>Exercises</Text>
       </View>
+    </View>
 
       {/* Split Options */}
       <ScrollView contentContainerStyle={styles.splitList}>
@@ -78,35 +82,41 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: 15, // Increased spacing
+    marginBottom: 15, 
+  },
+  progressItem: {
+    alignItems: "center", 
+    justifyContent: "center",
   },
   progressDot: {
-    width: 16,  // Increased size
+    width: 16,  
     height: 16,
     borderRadius: 8,
     backgroundColor: "#AAB2C8",
+    marginBottom: 5, // Space between dot and text
   },
   activeDot: {
     backgroundColor: "#1A2C51",
   },
   progressLine: {
-    width: 50,  // Increased width for better spacing
-    height: 4,  // Increased thickness
+    width: "100%",  
+    height: 3,  
+    marginBottom: 25,
+    flex: 1,
     backgroundColor: "#AAB2C8",
   },
-  progressLabels: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginBottom: 20,
-    paddingHorizontal: 30,
+  inactiveLabel: {
+    color: "#AAB2C8",
+    fontSize: 14,
+    textAlign: "center",
   },
   activeLabel: {
     color: "#1A2C51",
     fontWeight: "bold",
+    fontSize: 14,
+    textAlign: "center",
   },
-  inactiveLabel: {
-    color: "#AAB2C8",
-  },
+  
   splitList: {
     flexGrow: 1,
     gap: 25,  // Ensures a small gap between items
