@@ -9,8 +9,6 @@ const splits = [
   { title: "Push", muscles: "Chest / Shoulders / Triceps" },
   { title: "Pull", muscles: "Back / Biceps / Rear delts" },
   { title: "Legs", muscles: "Legs / Abs" },
-  
-
 ];
 
 export default function SplitsScreen({navigation}:any) {

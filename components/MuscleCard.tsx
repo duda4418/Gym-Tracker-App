@@ -4,10 +4,12 @@ import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 export default function MuscleCard({name, image, navigation}:any) {
 
   return (
-    <View style={styles.card}>
-        <Image source={image} style={styles.image} />
-        <Text style={styles.text}>{name}</Text>
-    </View>
+     <TouchableOpacity  style={styles.card} onPress={() => navigation.navigate('Exercises', { name: 'Exercises' })}>
+      <View>
+          <Image source={image} style={styles.image} />
+          <Text style={styles.text}>{name}</Text>
+      </View>
+    </TouchableOpacity>
   );
 }
 
@@ -20,7 +22,7 @@ const styles = StyleSheet.create({
       padding: 20,
     },
     card: {
-      width: 120,
+      width: "48%", // This ensures two cards fit per row with spacing
       height: 150,
       backgroundColor: "#5a74a7",
       borderRadius: 10,
@@ -28,6 +30,7 @@ const styles = StyleSheet.create({
       justifyContent: "center",
       padding: 10,
     },
+    
     image: {
       width: 100,
       height: 100,

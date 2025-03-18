@@ -42,16 +42,17 @@ export default function MusclesScreen( {navigation}:any) {
         </View>
       </View>
 
+      {/*Muscles list */}
       <ScrollView contentContainerStyle={styles.muscleList}>
         {muscles.map((muscle, index) => (
           <MuscleCard name={muscle.name} image={muscle.image} navigation={navigation} />
         ))}
       </ScrollView>
 
-      {/*Split Button */}
-      <View style={styles.container}>
-        <Text style={styles.newMuscleText}>New Muscle</Text>
-      </View>
+      {/*Muscle Button */}
+      <TouchableOpacity style={styles.newMuscleButton}>
+        <Text style={styles.newMuscleText}>New Muscles</Text>
+      </TouchableOpacity>
        
     </SafeAreaView>  
     );
@@ -115,8 +116,11 @@ const styles = StyleSheet.create({
 
 
     muscleList: {
-      flexGrow: 1,
-      gap: 20,  // Ensures a small gap between items
+      flexDirection: "row",
+      flexWrap: "wrap",
+      justifyContent: "space-between",
+      paddingHorizontal: 10, 
+      gap: 10,
     },
     splitCard: {
       flexDirection: "row",
@@ -134,12 +138,12 @@ const styles = StyleSheet.create({
 
     newMuscleButton: {
       backgroundColor: "#1A2C51",
-      padding: 15,
-      borderRadius: 20,
-      alignItems: "center",
-      marginBottom: 0,
-      marginTop: 5
-    },
+    padding: 15,
+    borderRadius: 20,
+    alignItems: "center",
+    marginBottom: 0,
+    marginTop: 5
+  },
     newMuscleText: {
       color: "white",
       fontSize: 16,
