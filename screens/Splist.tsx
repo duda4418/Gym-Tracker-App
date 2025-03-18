@@ -9,8 +9,6 @@ const splits = [
   { title: "Push", muscles: "Chest / Shoulders / Triceps" },
   { title: "Pull", muscles: "Back / Biceps / Rear delts" },
   { title: "Legs", muscles: "Legs / Abs" },
-  { title: "Arms", muscles: "Back / Biceps / Rear delts" },
-  { title: "Sigma", muscles: "Legs / Abs" },
   
 
 ];
@@ -30,13 +28,13 @@ export default function SplitsScreen({navigation}:any) {
       {/* Progress Bar */}
       <View style={styles.progressBar}>
       <View style={styles.progressItem}>
-        <View style={styles.progressDot} />
-        <Text style={styles.inactiveLabel}>Splits</Text>
+        <View style={[styles.progressDot, styles.activeDot]} />
+        <Text style={styles.activeLabel}>Splits</Text>
       </View>
       <View style={styles.progressLine} />
       <View style={styles.progressItem}>
-        <View style={[styles.progressDot, styles.activeDot]} />
-        <Text style={styles.activeLabel}>Muscles</Text>
+        <View style={styles.progressDot} />
+        <Text style={styles.inactiveLabel}>Muscles</Text>
       </View>
       <View style={styles.progressLine} />
       <View style={styles.progressItem}>
@@ -48,7 +46,7 @@ export default function SplitsScreen({navigation}:any) {
       {/* Split Options */}
       <ScrollView contentContainerStyle={styles.splitList}>
         {splits.map((split, index) => (
-          <SplitCard split={split}  navigation={navigation} key={index}/>
+          <SplitCard split={split}  navigation={navigation} />
         ))}
       </ScrollView>
 
@@ -119,7 +117,7 @@ const styles = StyleSheet.create({
   
   splitList: {
     flexGrow: 1,
-    gap: 25,  // Ensures a small gap between items
+    gap: 20,  // Ensures a small gap between items
   },
   splitCard: {
     flexDirection: "row",
@@ -134,15 +132,7 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 3,
   },
-  splitTitle: {
-    fontSize: 18,
-    fontWeight: "bold",
-    color: "#1A2C51",
-  },
-  splitSubtitle: {
-    color: "#444",
-    fontSize: 14,
-  },
+
   newSplitButton: {
     backgroundColor: "#1A2C51",
     padding: 15,

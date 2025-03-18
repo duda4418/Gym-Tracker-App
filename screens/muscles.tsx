@@ -3,8 +3,16 @@ import { View, Text, TouchableOpacity, ScrollView, StyleSheet, Platform } from "
 import { useNavigation } from "@react-navigation/native";
 import { ArrowLeft, ArrowRight } from "lucide-react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import SplitCard from "../components/SplitCard";
+import MuscleCard from "../components/MuscleCard";
 
-export default function MusclesScreen({navigation}:any) {
+export default function MusclesScreen( {navigation}:any) {
+
+  const muscles = [
+    { id: 1, name: "Shoulders", image: require("../assets/shoulders.png") },
+    { id: 2, name: "Chest", image: require("../assets/shoulders.png") },
+    { id: 3, name: "Biceps", image: require("../assets/shoulders.png") },
+  ];
 
   return (
 <SafeAreaView style={styles.container}>
@@ -27,12 +35,24 @@ export default function MusclesScreen({navigation}:any) {
           <View style={[styles.progressDot, styles.activeDot]} />
           <Text style={styles.activeLabel}>Muscles</Text>
         </View>
-        <View style={styles.progressLine} />
+        <View style={styles.progressLine}/> 
         <View style={styles.progressItem}>
           <View style={styles.progressDot} />
           <Text style={styles.inactiveLabel}>Exercises</Text>
         </View>
       </View>
+
+      <ScrollView contentContainerStyle={styles.muscleList}>
+        {muscles.map((muscle, index) => (
+          <MuscleCard name={muscle.name} image={muscle.image} navigation={navigation} />
+        ))}
+      </ScrollView>
+
+      {/*Split Button */}
+      <View style={styles.container}>
+        <Text style={styles.newMuscleText}>New Muscle</Text>
+      </View>
+       
     </SafeAreaView>  
     );
 }
@@ -91,6 +111,39 @@ const styles = StyleSheet.create({
       fontWeight: "bold",
       fontSize: 14,
       textAlign: "center",
+    },
+
+
+    muscleList: {
+      flexGrow: 1,
+      gap: 20,  // Ensures a small gap between items
+    },
+    splitCard: {
+      flexDirection: "row",
+      backgroundColor: "#AAB2C8",
+      padding: 15,
+      borderRadius: 20,
+      justifyContent: "space-between",
+      alignItems: "center",
+      shadowColor: "#000",
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.2,
+      shadowRadius: 4,
+      elevation: 3,
+    },
+
+    newMuscleButton: {
+      backgroundColor: "#1A2C51",
+      padding: 15,
+      borderRadius: 20,
+      alignItems: "center",
+      marginBottom: 0,
+      marginTop: 5
+    },
+    newMuscleText: {
+      color: "white",
+      fontSize: 16,
+      fontWeight: "bold",
     },
     
 
