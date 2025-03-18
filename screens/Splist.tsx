@@ -3,17 +3,18 @@ import { View, Text, TouchableOpacity, ScrollView, StyleSheet, Platform } from "
 import { useNavigation } from "@react-navigation/native";
 import { ArrowLeft, ArrowRight } from "lucide-react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import SplitCard from "../components/SplitCard";
 
 const splits = [
   { title: "Push", muscles: "Chest / Shoulders / Triceps" },
   { title: "Pull", muscles: "Back / Biceps / Rear delts" },
   { title: "Legs", muscles: "Legs / Abs" },
-  { title: "Arms", muscles: "Shoulders / Biceps / Triceps" },
-  { title: "Arnold", muscles: "Back / Chest / Rear delts" },
+  { title: "Arms", muscles: "Back / Biceps / Rear delts" },
+  { title: "Sigma", muscles: "Legs / Abs" },
+ 
 ];
 
-export default function SplitsScreen() {
-  const navigation = useNavigation();
+export default function SplitsScreen({navigation}:any) {
 
   return (
     <SafeAreaView style={styles.container}>
@@ -43,13 +44,7 @@ export default function SplitsScreen() {
       {/* Split Options */}
       <ScrollView contentContainerStyle={styles.splitList}>
         {splits.map((split, index) => (
-          <TouchableOpacity key={index} style={styles.splitCard}>
-            <View>
-              <Text style={styles.splitTitle}>{split.title}</Text>
-              <Text style={styles.splitSubtitle}>{split.muscles}</Text>
-            </View>
-            <ArrowRight color="white" size={20} />
-          </TouchableOpacity>
+          <SplitCard split={split}  navigation={navigation} key={index}/>
         ))}
       </ScrollView>
 
@@ -114,13 +109,13 @@ const styles = StyleSheet.create({
   },
   splitList: {
     flexGrow: 1,
+    gap: 25,  // Ensures a small gap between items
   },
   splitCard: {
     flexDirection: "row",
     backgroundColor: "#AAB2C8",
     padding: 15,
     borderRadius: 20,
-    marginBottom: 15,
     justifyContent: "space-between",
     alignItems: "center",
     shadowColor: "#000",
@@ -143,7 +138,8 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 20,
     alignItems: "center",
-    marginBottom: 20,
+    marginBottom: 0,
+    marginTop: 5
   },
   newSplitText: {
     color: "white",

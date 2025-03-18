@@ -8,6 +8,8 @@ import { Icon } from 'react-native-paper'
 import HomeScreen from '../screens/Home';
 import SplitsScreen from '../screens/Splist';
 import ProfileScreen from '../screens/Profile';
+import MusclesScreen from '../screens/muscles';
+import WorkoutStack from '../stacks/WorkoutsStack';
 
 const Tab = createBottomTabNavigator();
 
@@ -75,7 +77,7 @@ export default function NavBar() {
       />
       <Tab.Screen
         name="Workouts"
-        component={SplitsScreen}
+        component={WorkoutStack}
         options={{
           tabBarLabel: 'Workouts',
           tabBarIcon: ({ color, size, focused }) => {
