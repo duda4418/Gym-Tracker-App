@@ -3,10 +3,13 @@ import { View, Text, TouchableOpacity, ScrollView, StyleSheet, Platform } from "
 import { useNavigation } from "@react-navigation/native";
 import { ArrowLeft, ArrowRight } from "lucide-react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import SplitCard from "../components/SplitCard";
+import { Portal} from 'react-native-paper';
 import MuscleCard from "../components/MuscleCard";
+import MuscleModal from "../components/MuscleModal";
 
 export default function MusclesScreen( {navigation}:any) {
+
+  const [visible, setVisible] = React.useState(false);
 
   const muscles = [
     { id: 1, name: "Shoulders", image: require("../assets/shoulders.png") },
@@ -50,9 +53,13 @@ export default function MusclesScreen( {navigation}:any) {
       </ScrollView>
 
       {/*Muscle Button */}
-      <TouchableOpacity style={styles.newMuscleButton}>
+      <TouchableOpacity style={styles.newMuscleButton} onPress={()=>setVisible(true)}>
         <Text style={styles.newMuscleText}>New Muscles</Text>
       </TouchableOpacity>
+      
+      <Portal>
+        <MuscleModal visible={visible} setVisible={setVisible}/>
+      </Portal>
        
     </SafeAreaView>  
     );

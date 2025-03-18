@@ -4,6 +4,8 @@ import { useNavigation } from "@react-navigation/native";
 import { ArrowLeft, ArrowRight } from "lucide-react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import SplitCard from "../components/SplitCard";
+import SplitModal from "../components/SplitModal";
+import { Portal} from 'react-native-paper';
 
 const splits = [
   { title: "Push", muscles: "Chest / Shoulders / Triceps" },
@@ -12,6 +14,8 @@ const splits = [
 ];
 
 export default function SplitsScreen({navigation}:any) {
+
+  const [visible, setVisible] = React.useState(false);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -49,9 +53,13 @@ export default function SplitsScreen({navigation}:any) {
       </ScrollView>
 
       {/* New Split Button */}
-      <TouchableOpacity style={styles.newSplitButton}>
+      <TouchableOpacity style={styles.newSplitButton} onPress={()=>setVisible(true)}>
         <Text style={styles.newSplitText}>New split</Text>
       </TouchableOpacity>
+
+      <Portal>
+        <SplitModal visible={visible} setVisible={setVisible}/>
+      </Portal>
     </SafeAreaView>
   );
 }
